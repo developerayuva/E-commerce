@@ -42,7 +42,7 @@ function CartState(props) {
     
     //Delete an item from the cart
     const deleteFromCart = async (id) => {
-        const response = await fetch(`http://localhost:5000/api/cart/deleteitem//${id}`,{
+        const response = await fetch(`http://localhost:5000/api/cart/deleteitem/${id}`,{
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',
@@ -53,6 +53,8 @@ function CartState(props) {
         const json = await response.json();
         if(json.success) {
             getCartItems();
+        } else {
+            console.log("nhi ho paya");
         }
     }
 
