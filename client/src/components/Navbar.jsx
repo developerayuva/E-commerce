@@ -1,13 +1,38 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import { Link, useNavigate} from "react-router-dom";
 import Signin from "./Signin";
+import { useRef } from "react";
+import UserContext from "../context/User/UserContext";
 
 function Navbar() {
   const navigate = useNavigate();
+  const ref = useRef(null);
+  const contextUser = useContext(UserContext);
+  const {user, setUser, getUserDetails} = contextUser;
 
+  useEffect(() => {
+    if(localStorage.getItem('token')) {
+      getUserDetails();
+    }
+    // eslint-disable-next-line
+  },[])
+  
   function handleClick() {
     localStorage.clear('token');
+    setUser({
+      name: {
+          first: "",
+          last: ""
+      },
+      email: ""
+    });
     navigate('/');
+  }
+
+  function authenticate() {
+    if(!localStorage.getItem('token')) {
+      ref.current.click();
+    }
   }
 
   return (
@@ -42,7 +67,7 @@ function Navbar() {
               </Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/cart">
+              <Link className="nav-link" to={localStorage.getItem('token')?"/cart":"/"} onClick={authenticate}>
                 Cart
               </Link>
             </li>
@@ -62,15 +87,15 @@ function Navbar() {
             <div className="d-lg-flex col-lg-4">
               <div className="mx-auto mt-2">
                 <span className="navbar-text text-capitalize">
-                  Hi Ayush vatsa
+                  {user.name.first ? `Hi ${user.name.first}`:""}
                 </span>
               </div>
-              <div className="">
-                <Signin />
+              <div className="ms-auto">
+                <Signin getUserDetails={getUserDetails}/>
                 {
                   !localStorage.getItem('token')?
                   <form className="d-grid gap-2 d-lg-block d-lg-flex justify-content-lg-end mt-3 mt-lg-0"> 
-                    <div className="btn btn-color" role="button" data-bs-target="#signInToggle" data-bs-toggle="modal">Signin / Signup</div>
+                    <div className="btn btn-color" role="button" ref={ref} data-bs-target="#signInToggle" data-bs-toggle="modal">Signin / Signup</div>
                   </form> :
                   <form className="d-grid gap-2 d-lg-block d-lg-flex justify-content-lg-end mt-3 mt-lg-0"> 
                     <div className="btn btn-color" role="button" onClick={handleClick}>Logout</div>

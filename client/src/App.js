@@ -7,11 +7,14 @@ import CartState from "./context/Cart/CartState";
 import Footer from "./components/footer";
 import About from "./components/About";
 import CartProducts from "./components/CartProducts";
+import UserState from "./context/User/UserState";
 
 function App() {
   return (
     <BrowserRouter>
-      <Navbar />
+      <UserState>
+        <Navbar />
+      </UserState>
         <Routes>
           <Route path="/" element={
               <ProductState>

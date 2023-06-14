@@ -28,7 +28,6 @@ function SignupForm(props) {
         const json = await response.json();
         if(json.success) {
             localStorage.setItem('token', json.authtoken);
-            console.log("success");
             props.closeModal()
             navigate('/');
         } else {

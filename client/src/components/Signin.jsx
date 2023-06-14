@@ -2,15 +2,17 @@ import React, { useRef } from "react";
 import SigninForm from "./SigninForm";
 import SignupForm from "./SignupForm";
 
-function Signin() {
+function Signin(props) {
     const ref1 = useRef(null);
     const ref2 = useRef(null);
 
     function closeSignInModal() {
+        props.getUserDetails();
         ref1.current.click();
     }
-
+    
     function closeSignUpModal() {
+        props.getUserDetails();
         ref2.current.click();
     }
     

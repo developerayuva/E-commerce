@@ -34,7 +34,7 @@ router.post('/signup', [
         //Hashing password with salt
         var salt = bcrypt.genSaltSync(10);
         const secPass = bcrypt.hashSync(req.body.password, salt);
-        user = User.create({
+        user = await User.create({
             name: {
                 first: req.body.fName,
                 last: req.body.lName
