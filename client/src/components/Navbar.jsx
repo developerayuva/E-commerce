@@ -1,8 +1,15 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate} from "react-router-dom";
 import Signin from "./Signin";
 
 function Navbar() {
+  const navigate = useNavigate();
+
+  function handleClick() {
+    localStorage.clear('token');
+    navigate('/');
+  }
+
   return (
     <nav className="navbar navbar-expand-lg dark-color">
       <div className="container-fluid">
@@ -60,9 +67,15 @@ function Navbar() {
               </div>
               <div className="">
                 <Signin />
-                <form className="d-grid gap-2 d-lg-block d-lg-flex justify-content-lg-end mt-3 mt-lg-0"> 
-                  <div className="btn btn-color" role="button" data-bs-target="#signInToggle" data-bs-toggle="modal">Signin / Signup</div>
-                </form>
+                {
+                  !localStorage.getItem('token')?
+                  <form className="d-grid gap-2 d-lg-block d-lg-flex justify-content-lg-end mt-3 mt-lg-0"> 
+                    <div className="btn btn-color" role="button" data-bs-target="#signInToggle" data-bs-toggle="modal">Signin / Signup</div>
+                  </form> :
+                  <form className="d-grid gap-2 d-lg-block d-lg-flex justify-content-lg-end mt-3 mt-lg-0"> 
+                    <div className="btn btn-color" role="button" onClick={handleClick}>Logout</div>
+                  </form>
+                }
               </div>
             </div>
           </div>
