@@ -1,0 +1,27 @@
+import React, { useContext, useEffect } from "react";
+import ProductContext from "../context/Product/ProductContext"
+import Item from "./Item";
+
+function Products() {
+    const contextProduct = useContext(ProductContext);
+    const {products, getAllProducts} = contextProduct;
+
+    useEffect(() =>{
+        getAllProducts();
+        // eslint-disable-next-line
+    }, []);
+    
+    return (
+        <div className="container">
+            <h1 className="display-3 fw-semibold text-center my-3">Welcome to Deliv</h1>
+            <p className="text-center fs-2 lead mb-5 mx-auto" id="content-para">Your preferred online shopping platform. Deliv aims to offer a seamless, fun and reliable shopping experience to millions of users worldwide.</p>
+            <div className="row">
+                {products.map((item) => {
+                    return <Item key={item._id} item={item} insideCart={false}/>
+                })}
+            </div>
+        </div>
+    )
+}
+
+export default Products;

@@ -1,0 +1,41 @@
+body {
+    min-height: 100vh;
+    position: relative;
+    background-color: #E3F4F4;
+    /* padding-top: 70px; */
+    padding-bottom: 120px;
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+.dark-color {
+    background-color: #C4DFDF;
+}
+
+.btn-color {
+    background-color: #F8F6F4;
+}
+
+@media only screen and (max-width: 992px) {
+    #content-para {
+        width: 75%;
+    }
+}
+
+@media only screen and (min-width: 992px) {
+    #content-para {
+        width: 50%;
+    }
+}
+
+#itemcard-img {
+    padding: 20px;
+}
+
+#modal-button {
+    cursor: pointer;
+}

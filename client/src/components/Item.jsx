@@ -1,0 +1,27 @@
+import React from "react";
+import { Link } from "react-router-dom";
+
+function Item(props) {
+    const {title, image, price} = props.item;
+    const insideCart = props.insideCart;
+    return (
+        <div className="col-xl-4 col-md-6">
+            <div className="card mb-3">
+                <div className="row g-0">
+                    <div className="d-flex col-4">
+                        <img src={image} className="img-fluid rounded-start align-items-center p-md-3 p-4" alt="product_image" id="itemcard-img"/>
+                    </div>
+                    <div className="col-8 card-body d-flex flex-column justify-content-between">
+                        <h5 className="card-title">{title}</h5>
+                        <div className="d-flex justify-content-between mt-auto">
+                            <Link className="btn btn-color mx-1" to="/..." role="button">{!insideCart?"Add to Cart":"Delete from Cart"}</Link>
+                            <p className="card-text fs-4 fw-bold"><small className="text-body-secondary">₹ {price}/-</small></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    )
+}
+
+export default Item;
