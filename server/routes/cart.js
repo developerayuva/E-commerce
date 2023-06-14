@@ -16,7 +16,7 @@ router.get('/getcartitems', fetchuser, async(req, res) => {
             .then(pro => {
                 //pro will be an array of fulfilled Promises with status and value
                 let cartProducts = pro.map((elem) => elem.value);
-                res.json(cartProducts);
+                res.json({success:true, cartProducts});
             })
             .catch(err => {
                 console.log(err.message);
