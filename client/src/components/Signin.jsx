@@ -3,10 +3,15 @@ import SigninForm from "./SigninForm";
 import SignupForm from "./SignupForm";
 
 function Signin() {
-    const ref = useRef(null);
+    const ref1 = useRef(null);
+    const ref2 = useRef(null);
 
-    function closeModal() {
-        ref.current.click();
+    function closeSignInModal() {
+        ref1.current.click();
+    }
+
+    function closeSignUpModal() {
+        ref2.current.click();
     }
     
     return (
@@ -16,10 +21,10 @@ function Signin() {
                     <div className="modal-content">
                         <div className="modal-header">
                             <h1 className="modal-title fs-5" id="signInToggleLabel">Signin to continue your shopping</h1>
-                            <button type="button" ref={ref} className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            <button type="button" ref={ref1} className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div className="modal-body">
-                            <SigninForm closeModal={closeModal}/>
+                            <SigninForm closeModal={closeSignInModal}/>
                         </div>
                         <div className="modal-footer">
                             <div className="text-muted fst-light fst-italic text-decoration-underline" data-bs-target="#signUpToggle" data-bs-toggle="modal" id="modal-button">New to deliv <strong>Signup</strong> instead</div>
@@ -32,10 +37,10 @@ function Signin() {
                     <div className="modal-content">
                         <div className="modal-header">
                             <h1 className="modal-title fs-5" id="signUpToggleLabel">Welcome to Deliv</h1>
-                            <button type="button" ref={ref} className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            <button type="button" ref={ref2} className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div className="modal-body">
-                            <SignupForm closeModal={closeModal}/>
+                            <SignupForm closeModal={closeSignUpModal}/>
                         </div>
                         <div className="modal-footer">
                             <div className="text-muted fst-light fst-italic text-decoration-underline" data-bs-target="#signInToggle" data-bs-toggle="modal" id="modal-button">Already have an account <strong>Signin</strong> instead! </div>
