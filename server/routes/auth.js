@@ -119,16 +119,16 @@ router.post('/getuser', fetchuser, async(req, res) => {
     try {
         //fetchuser middleware will return the id using auth-token
         const userId = req.user.id;
-        let user = await User.findOne({_id: userId}).select("-password");
+        let user = await User.findOne({_id: userId}, 'name email');
         //if no such user found with the given token
         if(!user) {
             res.status(401).json({error: 'Please use a valid token'});
         } else {
-            res.json(user);
+            res.json({success:true, user});
         }
     } catch(error) {
         console.log(error);
-        res.status(500).send("Internal server error occurmmmed");
+        res.status(500).send("Internal server error occured");
     }
 })
 
