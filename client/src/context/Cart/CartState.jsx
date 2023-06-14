@@ -1,7 +1,9 @@
 import { useState } from "react";
 import CartContext from "./CartContext";
+import { useNavigate } from "react-router-dom";
 
 function CartState(props) {
+    const navigate = useNavigate();
     const [cartItems, setCartItems] = useState([]);
 
     //Getting all the items from the cart
@@ -10,12 +12,16 @@ function CartState(props) {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
-                'auth-token': "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjQ4MzAwMzUzMTgwMzRiZjMxMTNhYTI2In0sImlhdCI6MTY4NjQyMDA1N30.ayLFBzLQ9LA2Kbw8OCkeOS-6meqL8VztLhWe6ruBKKE"
+                'auth-token': localStorage.getItem('token')
             }
         });
 
         const json = await response.json();
-        setCartItems(json);
+        if(json.success) {
+            setCartItems(json.cartProducts);
+        } else {
+            navigate('/');
+        }
     }
 
     //Adding an item to the cart
@@ -24,7 +30,7 @@ function CartState(props) {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
-                'auth-token': "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjQ4MzAwMzUzMTgwMzRiZjMxMTNhYTI2In0sImlhdCI6MTY4NjQyMDA1N30.ayLFBzLQ9LA2Kbw8OCkeOS-6meqL8VztLhWe6ruBKKE"
+                'auth-token': localStorage.getItem('token')
             }
         });
         
@@ -40,7 +46,7 @@ function CartState(props) {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',
-                'auth-token': "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjQ4MzAwMzUzMTgwMzRiZjMxMTNhYTI2In0sImlhdCI6MTY4NjQyMDA1N30.ayLFBzLQ9LA2Kbw8OCkeOS-6meqL8VztLhWe6ruBKKE"
+                'auth-token': localStorage.getItem('token')
             }
         });
 
