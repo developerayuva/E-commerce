@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-function SignupForm() {
+function SignupForm(props) {
     const navigate = useNavigate();
     const [credentials, setCredentials] = useState({
         fName: "",
@@ -28,6 +28,8 @@ function SignupForm() {
         const json = await response.json();
         if(json.success) {
             localStorage.setItem('token', json.authtoken);
+            console.log("success");
+            props.closeModal()
             navigate('/');
         } else {
             alert(`${json.error}`);
@@ -57,7 +59,7 @@ function SignupForm() {
                 <label htmlFor="exampleInputPassword3" className="form-label">Confirm Password</label>
                 <input type="password" className="form-control" value={credentials.passwordConfirmation} onChange={handleChange} name="passwordConfirmation" id="exampleInputPassword3" />
             </div>
-            <button type="submit" className="btn btn-secondary" data-bs-dismiss="modal">Submit</button>
+            <button type="submit" className="btn btn-secondary">Submit</button>
         </form>
     )
 }

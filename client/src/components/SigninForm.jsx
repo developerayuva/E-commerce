@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-function SigninForm() {
+function SigninForm(props) {
     const navigate = useNavigate();
     const [credentials, setCredentials] = useState({
         email: "",
@@ -25,6 +25,7 @@ function SigninForm() {
         const json = await response.json();
         if(json.success) {
             localStorage.setItem('token', json.authtoken);
+            props.closeModal()
             navigate('/');
         } else {
             alert('Invalid credentials');
@@ -42,7 +43,7 @@ function SigninForm() {
                 <label htmlFor="exampleInputPassword1" className="form-label">Password</label>
                 <input type="password" className="form-control" value={credentials.password} onChange={handleChange} name="password" id="exampleInputPassword1" />
             </div>
-            <button type="submit" className="btn btn-secondary" data-bs-dismiss="modal">Submit</button>
+            <button type="submit" className="btn btn-secondary">Submit</button>
         </form>
     )
 }
