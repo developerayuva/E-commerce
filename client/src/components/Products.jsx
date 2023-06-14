@@ -1,6 +1,7 @@
 import React, { useContext, useEffect } from "react";
 import ProductContext from "../context/Product/ProductContext"
 import Item from "./Item";
+import CartState from "../context/Cart/CartState";
 
 function Products() {
     const contextProduct = useContext(ProductContext);
@@ -17,7 +18,11 @@ function Products() {
             <p className="text-center fs-2 lead mb-5 mx-auto" id="content-para">Your preferred online shopping platform. Deliv aims to offer a seamless, fun and reliable shopping experience to millions of users worldwide.</p>
             <div className="row">
                 {products.map((item) => {
-                    return <Item key={item._id} item={item} insideCart={false}/>
+                    return (
+                        <CartState>
+                            <Item key={item._id} item={item} insideCart={false}/>
+                        </CartState>
+                    )
                 })}
             </div>
         </div>
