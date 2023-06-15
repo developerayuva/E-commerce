@@ -19,8 +19,8 @@ function Products() {
             <div className="row">
                 {products.map((item) => {
                     return (
-                        <CartState>
-                            <Item key={item._id} item={item} insideCart={false}/>
+                        <CartState key={item._id}>
+                            <Item item={item} insideCart={false}/>
                         </CartState>
                     )
                 })}
