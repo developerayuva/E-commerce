@@ -25,7 +25,12 @@ function Item(props) {
                     <div className="col-8 card-body d-flex flex-column justify-content-between">
                         <h5 className="card-title">{title}</h5>
                         <div className="d-flex justify-content-between mt-auto">
-                            <button className="btn btn-color mx-1" onClick={handleClick}>{!insideCart?"Add to Cart":"Delete from Cart"}</button>
+                            <button className="btn mx-1" onClick={handleClick}>
+                                {!insideCart?
+                                 <i className="fa-solid fa-cart-plus fa-xl"></i>:
+                                 <i className="fa-solid fa-trash-can fa-xl"></i>
+                                }
+                            </button>
                             <p className="card-text fs-4 fw-bold"><small className="text-body-secondary">₹ {price}/-</small></p>
                         </div>
                     </div>

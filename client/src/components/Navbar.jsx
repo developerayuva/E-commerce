@@ -68,7 +68,7 @@ function Navbar() {
             </li>
             <li className="nav-item">
               <Link className="nav-link" to={localStorage.getItem('token')?"/cart":"/"} onClick={authenticate}>
-                Cart
+                <i className="fa-solid fa-cart-shopping fa-xl"></i>
               </Link>
             </li>
           </ul>
@@ -87,7 +87,8 @@ function Navbar() {
             <div className="d-lg-flex col-lg-4">
               <div className="mx-auto mt-2">
                 <span className="navbar-text text-capitalize">
-                  {user.name.first ? `Hi ${user.name.first} ${user.name.last}`:""}
+                  <i className={"fa-solid fa-user fa-xl me-2 " + (localStorage.getItem('token')?"":"d-none")}></i>
+                  {user.name.first ? `${user.name.first} ${user.name.last}`:""}
                 </span>
               </div>
               <div className="ms-auto">
