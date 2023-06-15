@@ -55,13 +55,13 @@ function Navbar() {
             </li>
             <li className="nav-item">
               <Link className="nav-link" to={localStorage.getItem('token')?"/cart":""} onClick={authenticate}>
-                <i className="fa-solid fa-cart-shopping fa-xl" style={{color:"#faaa31"}}></i>
+                <i className="fa-solid fa-cart-shopping fa-xl dark-color-text"></i>
               </Link>
             </li>
           </ul>
           <div className="row ms-lg-2 flex-grow-1" id="navbar-row">
             <form className="d-flex col-lg-8" role="search">
-                <input className="form-control dark-border" type="search" placeholder="Search" aria-label="Search" />
+                <input className="form-control dark-border" type="search" placeholder="Type Something to Search ..." aria-label="Search" />
                 <button className="btn dark-color-text ms-2" type="submit">
                   Search
                 </button>
@@ -69,7 +69,7 @@ function Navbar() {
             <div className="d-lg-flex col-lg-4">
               <div className="mx-auto mt-2">
                 <span className="navbar-text text-capitalize dark-color-text-unhover">
-                  <i className={"fa-solid fa-user fa-xl me-2 " + (localStorage.getItem('token')?"":"d-none")} style={{color:"#faaa31"}}></i>
+                  <i className={"fa-solid fa-user fa-xl me-2 " + (localStorage.getItem('token')?"dark-color-text-unhover":"d-none")}></i>
                   {user.name.first ? `${user.name.first} ${user.name.last}`:""}
                 </span>
               </div>

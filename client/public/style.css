@@ -54,6 +54,11 @@ footer {
     background-color: #F8F6F4;
 }
 
+.form-control::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: #faaa31;
+    opacity: 1; /* Firefox */
+}
+
 @media only screen and (max-width: 992px) {
     #content-para {
         width: 75%;
