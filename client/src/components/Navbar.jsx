@@ -87,7 +87,7 @@ function Navbar() {
             <div className="d-lg-flex col-lg-4">
               <div className="mx-auto mt-2">
                 <span className="navbar-text text-capitalize">
-                  {user.name.first ? `Hi ${user.name.first}`:""}
+                  {user.name.first ? `Hi ${user.name.first} ${user.name.last}`:""}
                 </span>
               </div>
               <div className="ms-auto">
