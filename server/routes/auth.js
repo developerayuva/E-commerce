@@ -6,6 +6,16 @@ const bcrypt = require('bcryptjs');
 let fetchuser = require('../middleware/fetchuser')
 let jwt = require('jsonwebtoken');
 
+// Capitalize first charcter of user first-name and last-name
+const capitalize = (string) => {
+    const words = string.split(" ");
+    const finalString = words.map((word) => { 
+        return word[0].toUpperCase() + word.substring(1).toLowerCase(); 
+    }).join(" ");
+
+    return finalString;
+}
+
 // ROUTE 1: SignUp using: POST "/api/auth/signup". No login required
 router.post('/signup', [
     body('fName', 'Enter a valid name').isLength({min: 1}),
@@ -36,8 +46,8 @@ router.post('/signup', [
         const secPass = bcrypt.hashSync(req.body.password, salt);
         user = await User.create({
             name: {
-                first: req.body.fName,
-                last: req.body.lName
+                first: capitalize(req.body.fName),
+                last: capitalize(req.body.lName)
             },
             email: req.body.email,
             password: secPass
