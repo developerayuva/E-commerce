@@ -48,7 +48,7 @@ function SignupForm(props) {
             <div className="mb-3">
                 <label htmlFor="exampleInputEmail2" className="form-label">Email address</label>
                 <input type="email" className="form-control" value={credentials.email} onChange={handleChange} name="email" id="exampleInputEmail2" aria-describedby="emailHelp" />
-                <div id="emailHelp" className="form-text">We'll never share your email with anyone else.</div>
+                <div id="emailHelp" className="form-text dark-color-text-unhover">We'll never share your email with anyone else.</div>
             </div>
             <div className="mb-3">
                 <label htmlFor="exampleInputPassword2" className="form-label">Password</label>
@@ -58,7 +58,7 @@ function SignupForm(props) {
                 <label htmlFor="exampleInputPassword3" className="form-label">Confirm Password</label>
                 <input type="password" className="form-control" value={credentials.passwordConfirmation} onChange={handleChange} name="passwordConfirmation" id="exampleInputPassword3" />
             </div>
-            <button type="submit" className="btn btn-secondary">Submit</button>
+            <button type="submit" className="btn dark-color-text dark-border">Submit</button>
         </form>
     )
 }

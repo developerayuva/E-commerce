@@ -1,8 +1,6 @@
 body {
     min-height: 100vh;
     position: relative;
-    background-color: #E3F4F4;
-    /* padding-top: 70px; */
     padding-bottom: 120px;
 }
 
@@ -12,8 +10,44 @@ footer {
     width: 100%;
 }
 
-.dark-color {
-    background-color: #C4DFDF;
+.dark-color-background {
+    background-color: #faaa31;
+}
+
+.dark-color-background:hover {
+    background-color: #faaa31;
+}
+
+.light-color-background {
+    background-color: #fddd7a;
+}
+
+.dark-color-text {
+    color: #faaa31;
+}
+
+.dark-color-text-unhover {
+    color: #faaa31;
+}
+
+.dark-color-text:hover {
+    color: black;
+}
+
+.light-color-text {
+    color: #fddd7a;
+}
+
+.dark-border {
+    border-color: #faaa31;
+}
+
+.img-class {
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    object-fit: cover; 
 }
 
 .btn-color {

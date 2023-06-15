@@ -1,9 +1,10 @@
 import React from "react";
+import AboutUsImg from "./ImageComponents/AboutUsImg"
 
 function About() {
     return (
         <div>
-            This is About us
+            <AboutUsImg />
         </div>
     );
 }

@@ -20,7 +20,7 @@ function Signin(props) {
         <div>
             <div className="modal fade" id="signInToggle" aria-hidden="true" aria-labelledby="signInToggleLabel" tabIndex="-1">
                 <div className="modal-dialog modal-dialog-centered">
-                    <div className="modal-content">
+                    <div className="modal-content dark-color-text-unhover">
                         <div className="modal-header">
                             <h1 className="modal-title fs-5" id="signInToggleLabel">Signin to continue your shopping</h1>
                             <button type="button" ref={ref1} className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -29,14 +29,14 @@ function Signin(props) {
                             <SigninForm closeModal={closeSignInModal}/>
                         </div>
                         <div className="modal-footer">
-                            <div className="text-muted fst-light fst-italic text-decoration-underline" data-bs-target="#signUpToggle" data-bs-toggle="modal" id="modal-button">New to deliv <strong>Signup</strong> instead</div>
+                            <div className="fst-light fst-italic text-decoration-underline dark-color-text-unhover" data-bs-target="#signUpToggle" data-bs-toggle="modal" id="modal-button">New to deliv <strong>Signup</strong> instead</div>
                         </div>
                     </div>
                 </div>
             </div>
             <div className="modal fade" id="signUpToggle" aria-hidden="true" aria-labelledby="signUpToggleLabel" tabIndex="-1">
                 <div className="modal-dialog modal-dialog-centered">
-                    <div className="modal-content">
+                    <div className="modal-content dark-color-text-unhover">
                         <div className="modal-header">
                             <h1 className="modal-title fs-5" id="signUpToggleLabel">Welcome to Deliv</h1>
                             <button type="button" ref={ref2} className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -45,7 +45,7 @@ function Signin(props) {
                             <SignupForm closeModal={closeSignUpModal}/>
                         </div>
                         <div className="modal-footer">
-                            <div className="text-muted fst-light fst-italic text-decoration-underline" data-bs-target="#signInToggle" data-bs-toggle="modal" id="modal-button">Already have an account <strong>Signin</strong> instead! </div>
+                            <div className="fst-light fst-italic text-decoration-underline dark-color-text-unhover" data-bs-target="#signInToggle" data-bs-toggle="modal" id="modal-button">Already have an account <strong>Signin</strong> instead! </div>
                         </div>
                     </div>
                 </div>
