@@ -3,6 +3,7 @@ import ProductContext from "../context/Product/ProductContext"
 import Item from "./Item";
 import CartState from "../context/Cart/CartState";
 import HomePageImg from "./ImageComponents/HomePageImg";
+import Spinner from "./Spinner";
 
 function Products() {
     const contextProduct = useContext(ProductContext);
@@ -19,6 +20,7 @@ function Products() {
             <div className="container">
                 <h1 className="display-3 fw-semibold text-center my-3">Welcome to Deliv</h1>
                 <p className="text-center fs-2 lead mb-5 mx-auto" id="content-para">Your preferred online shopping platform.<br /> Deliv aims to offer a seamless, fun and reliable shopping experience to millions of users worldwide.</p>
+                {products.length===0 && <Spinner />}
                 <div className="row">
                     {products.map((item) => {
                         return (
