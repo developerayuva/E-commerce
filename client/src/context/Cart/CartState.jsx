@@ -53,8 +53,6 @@ function CartState(props) {
         const json = await response.json();
         if(json.success) {
             getCartItems();
-        } else {
-            console.log("nhi ho paya");
         }
     }
 

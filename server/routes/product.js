@@ -8,7 +8,6 @@ router.get('/getallproducts', async (req, res) => {
         const products = await Product.find({}).select('-__v');
         res.json(products);
     } catch(error) {
-        console.log(error.message);
         res.status(500).send("Internal server error occured");
     }
 })

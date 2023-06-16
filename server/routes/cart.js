@@ -19,12 +19,10 @@ router.get('/getcartitems', fetchuser, async(req, res) => {
                 res.json({success:true, cartProducts});
             })
             .catch(err => {
-                console.log(err.message);
                 res.status(500).send("Internal server error occured");
             })
         
     } catch(error) {
-        console.log(error.message);
         res.status(500).send("Internal server error occured");
     }
 })
@@ -45,7 +43,6 @@ router.put('/additem/:id', fetchuser, async(req, res) => {
             res.json({success, result: 'Item already exists in cart'});
         }
     } catch(error) {
-        console.log(error.message);
         res.status(500).send("Internal server error occured");
     }
 })
@@ -66,7 +63,6 @@ router.delete('/deleteitem/:id', fetchuser, async(req, res) => {
             res.json({success, result: 'Item doesn\'t exists in cart'});
         }
     } catch(error) {
-        console.log(error.message);
         res.status(500).send("Internal server error occured");
     }
 })

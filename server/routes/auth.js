@@ -71,7 +71,6 @@ router.post('/signup', [
         });
 
     } catch(error) {
-        console.log(error.message);
         res.status(500).send("Internal server error occured");
     }
 })
@@ -118,7 +117,6 @@ router.post('/signin', [
         });
 
     } catch(error) {
-        console.log(error.message);
         res.status(500).send("Internal server error occured");
     }
 })
@@ -137,7 +135,6 @@ router.post('/getuser', fetchuser, async(req, res) => {
             res.json({success:true, user});
         }
     } catch(error) {
-        console.log(error);
         res.status(500).send("Internal server error occured");
     }
 })
