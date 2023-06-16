@@ -33,6 +33,8 @@ function Navbar() {
   function authenticate() {
     if(!localStorage.getItem('token')) {
       ref.current.click();
+    } else {
+      getUserDetails();
     }
   }
 
@@ -70,7 +72,8 @@ function Navbar() {
               <div className="mx-auto mt-2">
                 <span className="navbar-text text-capitalize dark-color-text-unhover">
                   <i className={"fa-solid fa-user fa-xl me-2 " + (localStorage.getItem('token')?"dark-color-text-unhover":"d-none")}></i>
-                  {user.name.first ? `${user.name.first} ${user.name.last}`:""}
+                  {user.name.first.length > 15 ? `${user.name.first.slice(0,10)}.. ` : `${user.name.first} `}
+                  {user.name.last.length > 15 ? `${user.name.last.slice(0,10)}..` : `${user.name.last}`}
                 </span>
               </div>
               <div className="ms-auto">
@@ -81,7 +84,7 @@ function Navbar() {
                     <div className="btn dark-color-text dark-border" role="button" ref={ref} data-bs-target="#signInToggle" data-bs-toggle="modal">Signin / Signup</div>
                   </form> :
                   <form className="d-grid gap-2 d-lg-block d-lg-flex justify-content-lg-end mt-3 mt-lg-0"> 
-                    <div className="btn dark-color-text dark-border" role="button" onClick={handleClick}>Logout</div>
+                    <div className="btn dark-color-text dark-border" role="button" ref={ref} onClick={handleClick}>Logout</div>
                   </form>
                 }
               </div>
