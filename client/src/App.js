@@ -22,11 +22,19 @@ function App() {
               </ProductState>
             }/>
           <Route path="/about" element={<About />} />
-          <Route path="/cart" element={
-              <CartState>
-                <CartProducts />
-              </CartState>
-            }/>            
+          {
+            localStorage.getItem('token') ? 
+            <Route path="/cart" element={
+                <CartState>
+                  <CartProducts />
+                </CartState>
+              }/> : 
+            <Route path="/cart" element={
+                <ProductState>
+                <Products />
+              </ProductState>
+              }/>
+          }
         </Routes>
       <Footer />
     </BrowserRouter>
