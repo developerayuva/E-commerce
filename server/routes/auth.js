@@ -32,7 +32,7 @@ router.post('/signup', [
     let success = false;
     const errors = validationResult(req);
     if(!errors.isEmpty()) {
-        return res.status(400).json({ validationErrors: errors.array()});
+        return res.status(400).json({ success: false, error: errors.array()[0].msg});
     }
     try {
         //whether the email already exists or not
@@ -84,7 +84,7 @@ router.post('/signin', [
     let success = false;
     const errors = validationResult(req);
     if(!errors.isEmpty()) {
-        return res.status(400).json({ validationErrors: errors.array()});
+        return res.status(400).json({ success: false, error: errors.array()[0].msg});
     }
     try {
         const {email, password} = req.body;
@@ -130,9 +130,9 @@ router.post('/getuser', fetchuser, async(req, res) => {
         let user = await User.findOne({_id: userId}, 'name email');
         //if no such user found with the given token
         if(!user) {
-            res.status(401).json({error: 'Please use a valid token'});
+            res.status(401).json({success: false, error: 'Please use a valid token'});
         } else {
-            res.json({success:true, user});
+            res.json({success: true, user});
         }
     } catch(error) {
         res.status(500).send("Internal server error occured");
